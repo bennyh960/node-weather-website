@@ -9,7 +9,10 @@ function App() {
   useEffect(() => {
     console.log(city);
     const getApi = async (city) => {
-      const { data } = await axios.get(`http://localhost:5000/${city}`);
+      // * in local env
+      // const { data } = await axios.get(`http://localhost:5000/${city}`);
+      // * with heroku
+      const { data } = await axios.get(`/${city}`);
       setWeather(data);
       console.log("data", data);
     };
