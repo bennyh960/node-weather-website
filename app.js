@@ -5,7 +5,7 @@
 
 const express = require("express");
 // const chalk = require("chalk");
-const cors = require("cros");
+const cors = require("cors");
 const axios = require("axios");
 
 // ******************
