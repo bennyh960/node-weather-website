@@ -4,7 +4,7 @@
 // import axios from "axios";
 
 const express = require("express");
-const chalk = require("chalk");
+// const chalk = require("chalk");
 const cors = require("cros");
 const axios = require("axios");
 
@@ -37,9 +37,11 @@ app.get("/:city", async (req, res) => {
   const weatherData = await getWeather(city);
   res.status(200).send(`${city}: wind ${weatherData}`);
   // res.status(200).send(weatherData);
-  console.log(chalk.green(`${city}: wind ${weatherData}`));
+  // console.log(chalk.green(`${city}: wind ${weatherData}`));
+  console.log(`${city}: wind ${weatherData}`);
 });
 
 app.listen(PORT, () => {
-  console.log(chalk.green.inverse(`Server On Air on port ${PORT}!`));
+  // console.log(chalk.green.inverse(`Server On Air on port ${PORT}!`));
+  console.log(`Server On Air on port ${PORT}!`);
 });
