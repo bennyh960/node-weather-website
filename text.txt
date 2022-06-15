@@ -1,0 +1,6 @@
+Linux for getting ssh
+
+1. ls -a -l >>> show all files in current dir in a list form
+2. ls -a -l ~/.ssh  >>>show in ssh file (tilda and slash make it possible show in other dir)
+3. generate ssh key: 
+>>> ssh-keygen -t rsa -b 4096 -C "bennyh960@gmail.com" (enter for all next queries)
