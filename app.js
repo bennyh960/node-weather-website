@@ -1,7 +1,12 @@
-import express from "express";
-import chalk from "chalk";
-import cors from "cors";
-import axios from "axios";
+// import express from "express";
+// import chalk from "chalk";
+// import cors from "cors";
+// import axios from "axios";
+
+const express = require("express");
+const chalk = require("chalk");
+const cors = require("cros");
+const axios = require("axios");
 
 // ******************
 // npm run dev
@@ -12,7 +17,14 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors(
+    cors({
+      origin: "*",
+    })
+  )
+);
 
 const getWeather = async (city) => {
   const { data } = await axios.get(`https://goweather.herokuapp.com/weather/${city}`);
