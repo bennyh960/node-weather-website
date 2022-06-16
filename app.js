@@ -4,10 +4,11 @@
 // import axios from "axios";
 
 const express = require("express");
-const chalk = require("chalk");
+// const chalk = require("chalk");
 const cors = require("cors");
 const axios = require("axios");
 const path = require("path");
+const bodyParser = require("body-parser");
 
 // ******************
 // npm run dev
@@ -40,8 +41,8 @@ app.get("/:city", async (req, res) => {
   res.status(200).send(`${city}: wind ${weatherData}`);
   // res.status(200).send(`${city}`);
   // res.status(200).send(weatherData);
-  console.log(chalk.green(`${city}: wind ${weatherData}`));
-  // console.log(`${city}: wind ${weatherData}`);
+  // console.log(chalk.green(`${city}: wind ${weatherData}`));
+  console.log(`${city}: wind ${weatherData}`);
 });
 
 if (process.env.NODE_ENV === "production") {

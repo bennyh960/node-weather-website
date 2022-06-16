@@ -19,10 +19,12 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
     "chalk": "^5.0.1",
     "concurrently": "^7.2.2",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "path": "^0.12.7"
   }
 }
