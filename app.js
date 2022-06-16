@@ -1,12 +1,13 @@
-import express from "express";
-import chalk from "chalk";
-import cors from "cors";
-import axios from "axios";
+// import express from "express";
+// import chalk from "chalk";
+// import cors from "cors";
+// import axios from "axios";
 
-// const express = require("express");
-// const chalk = require("chalk");
-// const cors = require("cors");
-// const axios = require("axios");
+const express = require("express");
+const chalk = require("chalk");
+const cors = require("cors");
+const axios = require("axios");
+const path = require("path");
 
 // ******************
 // npm run dev
@@ -15,7 +16,8 @@ import axios from "axios";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.urlencoded());
+// app.use(express.urlencoded());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 // app.use(
@@ -44,12 +46,17 @@ app.get("/:city", async (req, res) => {
 
 if (process.env.NODE_ENV === "production") {
   // Exprees will serve up production assets
-  app.use(express.static("client/build"));
+  // app.use(express.static("client/build"));
+  app.use(express.static(path.join(__dirname, "./client/build")));
 
   // Express serve up index.html file if it doesn't recognize route
-  const path = require("path");
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+
+  app.get("*", function (_, res) {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"), function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    });
   });
 }
 
