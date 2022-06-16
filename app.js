@@ -5,7 +5,7 @@
 
 const express = require("express");
 // const chalk = require("chalk");
-const cors = require("cors");
+// const cors = require("cors");
 const axios = require("axios");
 
 // ******************
@@ -18,13 +18,13 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.urlencoded());
 // app.use(cors());
-app.use(
-  cors(
-    cors({
-      origin: "*",
-    })
-  )
-);
+// app.use(
+//   cors(
+//     cors({
+//       origin: "*",
+//     })
+//   )
+// );
 
 const getWeather = async (city) => {
   const { data } = await axios.get(`https://goweather.herokuapp.com/weather/${city}`);
@@ -34,8 +34,9 @@ const getWeather = async (city) => {
 
 app.get("/:city", async (req, res) => {
   const { city } = req.params;
-  const weatherData = await getWeather(city);
-  res.status(200).send(`${city}: wind ${weatherData}`);
+  // const weatherData = await getWeather(city);
+  // res.status(200).send(`${city}: wind ${weatherData}`);
+  res.status(200).send(`${city}: wind ${city}`);
   // res.status(200).send(weatherData);
   // console.log(chalk.green(`${city}: wind ${weatherData}`));
   console.log(`${city}: wind ${weatherData}`);
