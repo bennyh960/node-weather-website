@@ -1,12 +1,12 @@
-// import express from "express";
-// import chalk from "chalk";
-// import cors from "cors";
-// import axios from "axios";
+import express from "express";
+import chalk from "chalk";
+import cors from "cors";
+import axios from "axios";
 
-const express = require("express");
+// const express = require("express");
 // const chalk = require("chalk");
 // const cors = require("cors");
-const axios = require("axios");
+// const axios = require("axios");
 
 // ******************
 // npm run dev
@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.urlencoded());
-// app.use(cors());
+app.use(cors());
 // app.use(
 //   cors(
 //     cors({
@@ -34,12 +34,12 @@ const getWeather = async (city) => {
 
 app.get("/:city", async (req, res) => {
   const { city } = req.params;
-  // const weatherData = await getWeather(city);
-  // res.status(200).send(`${city}: wind ${weatherData}`);
-  res.status(200).send(`${city}: wind ${city}`);
+  const weatherData = await getWeather(city);
+  res.status(200).send(`${city}: wind ${weatherData}`);
+  // res.status(200).send(`${city}`);
   // res.status(200).send(weatherData);
-  // console.log(chalk.green(`${city}: wind ${weatherData}`));
-  console.log(`${city}: wind ${weatherData}`);
+  console.log(chalk.green(`${city}: wind ${weatherData}`));
+  // console.log(`${city}: wind ${weatherData}`);
 });
 
 app.listen(PORT, () => {
